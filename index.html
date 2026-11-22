@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UFamily.org · The Future of America</title>
+<meta name="description" content="UFamily.org (Universal Family Connections): a Tacoma, WA 501(c)(3) empowering youth, individuals and families, and a home for the future of America.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a1a33; --navy2:#10284d; --ink:#f6f1e6; --muted:#a9b4c8; --gold:#c9a24a; --gold2:#e8cf8a; --paper:#f7f4ee; --text:#151c2b; --line:rgba(10,26,51,.12);
+    --tech:#2bb3c0; --good:#3fbf7f; --lead:#9d7be0; --org:#e07b4f; --red:#e0493f;
+    --serif:'Fraunces', Georgia, serif; --sans:'Inter', system-ui, -apple-system, sans-serif; --cond:'Oswald', 'Arial Narrow', sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; font-family:var(--sans); color:var(--text); background:var(--paper); -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; width:100%; height:100%; object-fit:cover; }
+  .wrap{ width:min(1280px, calc(100% - 40px)); margin:0 auto; }
+  .kick{ font-family:var(--cond); font-size:13px; letter-spacing:.12em; text-transform:uppercase; font-weight:600; }
+  .soon{ display:inline-block; font-family:var(--cond); font-size:10.5px; letter-spacing:.14em; padding:2px 7px; border-radius:3px; background:rgba(201,162,74,.15); color:#9a7a2c; border:1px solid rgba(201,162,74,.45); vertical-align:middle; margin-left:6px; }
+  .dark .soon{ color:var(--gold2); }
+  .sample{ display:inline-block; font-family:var(--cond); font-size:10.5px; letter-spacing:.14em; padding:2px 7px; border-radius:3px; background:rgba(224,73,63,.12); color:var(--red); border:1px solid rgba(224,73,63,.35); vertical-align:middle; margin-left:6px; }
+  .dark .sample, .lead .sample, .feat .sample{ background:rgba(224,73,63,.85); color:#fff; border-color:transparent; }
+  h1,h2,h3{ margin:0; }
+  .hd{ font-family:var(--serif); font-weight:800; letter-spacing:-.01em; line-height:1.08; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font-weight:700; font-size:14px; transition:transform .2s, box-shadow .2s, background .2s; border:0; cursor:pointer; font-family:var(--sans); }
+  .btn.gold{ background:linear-gradient(135deg,var(--gold2),var(--gold)); color:var(--navy); box-shadow:0 8px 24px rgba(201,162,74,.35); }
+  .btn.gold:hover{ transform:translateY(-2px); }
+  .btn.ghost{ border:1px solid rgba(246,241,230,.4); color:var(--ink); background:transparent; }
+  .btn.navy{ background:var(--navy); color:var(--ink); }
+
+  /* top strip + masthead */
+  .strip{ background:#07142a; color:var(--muted); font-size:12.5px; }
+  .strip .wrap{ display:flex; gap:18px; align-items:center; height:36px; }
+  .strip .sp{ flex:1; } .strip a:hover{ color:var(--gold2); }
+  header.mast{ background:var(--navy); color:var(--ink); position:sticky; top:0; z-index:50; box-shadow:0 1px 0 rgba(201,162,74,.3); }
+  .mast .row1{ display:flex; align-items:center; gap:24px; height:74px; }
+  .logo{ font-weight:900; font-size:30px; letter-spacing:.01em; line-height:1; }
+  .logo span{ color:var(--gold2); font-weight:500; }
+  .logo small{ display:block; font-family:var(--cond); font-size:11px; letter-spacing:.32em; color:var(--gold2); font-weight:500; margin-top:4px; }
+  .mast nav{ display:flex; gap:22px; margin-left:auto; }
+  .mast nav a{ font-family:var(--cond); font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:rgba(246,241,230,.85); padding:6px 0; border-bottom:2px solid transparent; transition:border-color .2s, color .2s; }
+  .mast nav a:hover{ color:#fff; border-color:var(--gold2); }
+  .mast .menu{ display:none; margin-left:auto; background:none; border:0; color:var(--ink); font-size:26px; cursor:pointer; }
+
+  /* ticker */
+  .ticker{ background:var(--gold); color:var(--navy); overflow:hidden; white-space:nowrap; font-family:var(--cond); font-weight:600; font-size:14px; letter-spacing:.04em; }
+  .ticker .wrap{ display:flex; align-items:center; height:38px; gap:16px; }
+  .ticker b{ background:var(--navy); color:var(--gold2); padding:4px 10px; border-radius:3px; font-size:12px; letter-spacing:.12em; flex:none; }
+  .ticker .rail{ overflow:hidden; flex:1; mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); }
+  .ticker .run{ display:inline-flex; gap:44px; animation:run 60s linear infinite; padding-left:20px; }
+  .ticker .run span::before{ content:'◆'; margin-right:12px; font-size:10px; opacity:.6; }
+  .ticker:hover .run{ animation-play-state:paused; }
+  @keyframes run{ to{ transform:translateX(-50%); } }
+
+  section{ padding:56px 0; scroll-margin-top:40px; }
+  .sh{ display:flex; align-items:center; gap:14px; margin-bottom:26px; }
+  .sh h2{ font-family:var(--cond); font-size:28px; letter-spacing:.04em; text-transform:uppercase; font-weight:700; }
+  .sh .bar{ flex:1; height:3px; background:currentColor; opacity:.15; }
+  .sh a{ font-family:var(--cond); font-size:14px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; }
+  .sh i{ width:12px; height:28px; border-radius:2px; display:block; }
+
+  /* UFamily featured slider */
+  .feat{ background:var(--navy); color:var(--ink); padding:34px 0 46px; }
+  .feat .grid{ display:grid; grid-template-columns:1fr 330px; gap:22px; }
+  .slides{ position:relative; border-radius:10px; overflow:hidden; min-height:500px; background:#000; }
+  .slide{ position:absolute; inset:0; opacity:0; transition:opacity .9s; }
+  .slide.on{ opacity:1; z-index:1; }
+  .slide img{ transform:scale(1.06); transition:transform 7s ease-out; }
+  .slide.on img{ transform:scale(1); }
+  .slide .tile{ position:absolute; inset:0; }
+  .slide .tile .glyph{ position:absolute; right:6%; top:12%; font-size:clamp(70px,10vw,150px); text-align:right; color:rgba(246,241,230,.22); }
+  .slide .tile .glyph small{ font-size:16px; color:rgba(232,207,138,.6); }
+  .slide::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(7,20,42,.1) 15%, rgba(7,20,42,.6) 50%, rgba(7,20,42,.96) 100%); }
+  .slide .cap{ position:absolute; z-index:2; left:0; right:0; bottom:0; padding:36px 40px; }
+  .slide .cap .kick{ color:var(--gold2); }
+  .slide .cap h2{ font-family:var(--serif); font-weight:800; font-size:clamp(30px,3.8vw,52px); line-height:1.05; margin:10px 0 12px; max-width:20ch; }
+  .slide .cap p{ color:rgba(246,241,230,.85); max-width:560px; margin:0 0 20px; font-size:16px; line-height:1.6; }
+  .dots{ position:absolute; z-index:3; right:24px; top:22px; display:flex; gap:8px; }
+  .dots button{ width:30px; height:4px; border:0; border-radius:2px; background:rgba(255,255,255,.35); cursor:pointer; padding:0; }
+  .dots button.on{ background:var(--gold2); }
+  .side{ display:flex; flex-direction:column; gap:12px; }
+  .side .lbl{ color:var(--gold2); }
+  .si{ display:grid; grid-template-columns:92px 1fr; gap:12px; align-items:center; padding:10px; border-radius:8px; background:rgba(255,255,255,.04); border:1px solid rgba(201,162,74,.18); cursor:pointer; transition:background .2s, border-color .2s; }
+  .si:hover, .si.on{ background:rgba(201,162,74,.12); border-color:var(--gold2); }
+  .si .th{ width:92px; height:70px; border-radius:6px; overflow:hidden; }
+  .si b{ font-size:14.5px; line-height:1.3; display:block; }
+  .si small{ color:var(--muted); font-size:12px; }
+
+  /* tiles without photos */
+  .tile{ display:flex; align-items:center; justify-content:center; }
+  .t-paint{ background:radial-gradient(circle at 25% 30%, #e0493f 0 18%, transparent 19%), radial-gradient(circle at 70% 60%, #c9a24a 0 22%, transparent 23%), radial-gradient(circle at 45% 80%, #9d7be0 0 14%, transparent 15%), linear-gradient(135deg,#1a0f2e,#0a1a33); }
+  .t-give{ background:radial-gradient(circle at 70% 35%, rgba(232,207,138,.55), transparent 45%), linear-gradient(135deg,#0f2547,#07142a); }
+  .t-tech{ background:linear-gradient(135deg,#06313a,#0a1a33); }
+  .t-good{ background:linear-gradient(135deg,#0f3d2a,#0a1a33); }
+  .t-lead{ background:linear-gradient(135deg,#2a1a4a,#0a1a33); }
+  .t-org{ background:linear-gradient(135deg,#4a2414,#0a1a33); }
+  .tile .glyph{ font-family:var(--serif); font-size:64px; color:rgba(246,241,230,.9); font-weight:800; text-align:center; line-height:1; padding:20px; }
+  .tile .glyph small{ display:block; font-family:var(--cond); font-size:14px; letter-spacing:.2em; color:var(--gold2); margin-top:10px; font-weight:500; }
+
+/* Upcoming community events (added 2026-11-22 from Kerry's flyers) */
+.ue{ background:var(--paper); padding:64px 0; }
+.ue .sh{ color:var(--navy); } .ue .sh i{ background:var(--gold); }
+.ue-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.ev2{ background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 24px 50px -34px rgba(10,26,51,.55); display:flex; flex-direction:column; border:1px solid var(--line); }
+.ev2 .fl{ aspect-ratio:4/5; overflow:hidden; cursor:zoom-in; background:#111; position:relative; }
+.ev2 .fl img{ transition:transform .6s; } .ev2 .fl:hover img{ transform:scale(1.04); }
+.ev2 .date{ position:absolute; left:14px; top:14px; background:var(--navy); color:var(--gold2); border-radius:8px; padding:8px 12px; text-align:center; font-family:var(--cond); line-height:1; box-shadow:0 8px 20px rgba(0,0,0,.35); }
+.ev2 .date b{ display:block; font-family:var(--serif); font-size:30px; color:#fff; margin-top:2px; }
+.ev2 .body{ padding:22px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.ev2 .kick{ color:#9a7a2c; }
+.ev2 h3{ font-family:var(--serif); font-size:23px; line-height:1.2; color:var(--navy); }
+.ev2 ul{ margin:0; padding:0; list-style:none; font-size:14px; color:#3d4659; display:grid; gap:5px; }
+.ev2 ul li::before{ content:'◆'; color:var(--gold); font-size:9px; margin-right:8px; vertical-align:2px; }
+.ev2 details{ font-size:14.5px; line-height:1.65; color:#4a5468; }
+.ev2 details summary{ cursor:pointer; font-weight:700; color:var(--navy); list-style:none; }
+.ev2 details summary::after{ content:' +'; color:var(--gold); } .ev2 details[open] summary::after{ content:' –'; }
+.ev2 details p{ margin:10px 0 0; }
+.ev2 .acts{ display:flex; gap:10px; flex-wrap:wrap; margin-top:auto; padding-top:6px; }
+.ev2 .btn.line2{ border:1px solid var(--navy); color:var(--navy); background:transparent; }
+.lb video{ max-width:100%; max-height:100%; border-radius:6px; }
+/* FWCC 2026 recap (added 2026-11-22 from Kerry's photos) */
+.recap{ background:linear-gradient(180deg,#07142a 0%, #0a1a33 100%); color:var(--ink); padding:70px 0 80px; position:relative; overflow:hidden; }
+.recap::before{ content:'FWCC'; position:absolute; right:-2%; top:-40px; font-family:var(--serif); font-weight:800; font-size:clamp(140px,22vw,340px); color:rgba(232,207,138,.05); letter-spacing:-.02em; pointer-events:none; }
+.recap .top{ display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap; margin-bottom:30px; position:relative; }
+.recap .badge{ display:inline-flex; align-items:center; gap:10px; font-family:var(--cond); letter-spacing:.14em; text-transform:uppercase; font-size:13px; color:var(--navy); background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:6px 12px; border-radius:3px; font-weight:700; }
+.recap h2{ font-family:var(--serif); font-weight:800; font-size:clamp(34px,4.6vw,64px); line-height:1.02; margin:16px 0 10px; max-width:15ch; }
+.recap h2 em{ color:var(--gold2); font-weight:500; }
+.recap .when{ color:var(--muted); font-size:15px; }
+.mosaic{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:190px; gap:10px; position:relative; }
+.mosaic figure{ margin:0; position:relative; overflow:hidden; border-radius:8px; cursor:zoom-in; background:#000; }
+.mosaic figure img{ transition:transform .7s, filter .7s; filter:saturate(1.05); }
+.mosaic figure:hover img{ transform:scale(1.06); }
+.mosaic figure figcaption{ position:absolute; left:0; right:0; bottom:0; padding:14px 14px 12px; font-size:12.5px; font-weight:600; background:linear-gradient(transparent, rgba(0,0,0,.8)); opacity:.95; }
+.mosaic .hero{ grid-column:span 2; grid-row:span 2; border:2px solid var(--gold2); box-shadow:0 0 0 6px rgba(232,207,138,.12); }
+.mosaic .hero figcaption{ font-size:15px; padding:22px 18px 16px; }
+.mosaic .hero figcaption b{ color:var(--gold2); }
+.mosaic .tall{ grid-row:span 2; }
+.thanks{ margin-top:26px; display:grid; grid-template-columns:auto 1fr auto; gap:28px; align-items:center; padding:26px 30px; border-radius:12px; background:linear-gradient(135deg, rgba(232,207,138,.16), rgba(232,207,138,.04)); border:1px solid rgba(232,207,138,.45); position:relative; }
+.fcb{ display:flex; align-items:center; gap:12px; padding:14px 20px; border-radius:8px; border:1px solid rgba(232,207,138,.5); }
+.fcb .flag{ width:46px; height:40px; background:linear-gradient(160deg,#1f3a93 0 50%, #c8102e 50% 100%); border-radius:3px; position:relative; }
+.fcb .flag::after{ content:''; position:absolute; inset:10px 8px; border-top:5px solid #fff; border-bottom:5px solid #fff; transform:skewY(-18deg); }
+.fcb span{ font-family:var(--serif); color:var(--ink); font-size:17px; line-height:1.05; font-weight:600; }
+.thanks .kick{ color:var(--gold2); }
+.thanks h3{ font-family:var(--serif); font-size:clamp(22px,2.2vw,30px); margin:6px 0 8px; }
+.thanks p{ margin:0; color:rgba(246,241,230,.85); line-height:1.65; font-size:15.5px; max-width:720px; }
+.thanks p b{ color:var(--gold2); }
+.tracks{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+.tracks span{ font-size:12.5px; padding:7px 12px; border-radius:999px; border:1px solid rgba(232,207,138,.3); color:rgba(246,241,230,.85); }
+.lb{ position:fixed; inset:0; z-index:200; background:rgba(3,8,18,.92); display:none; align-items:center; justify-content:center; padding:30px; cursor:zoom-out; }
+.lb.on{ display:flex; } .lb img{ width:auto; height:auto; max-width:100%; max-height:100%; border-radius:6px; object-fit:contain; }
+  /* latest */
+  .latest .grid{ display:grid; grid-template-columns:1.35fr 1fr; gap:28px; }
+  .lead{ position:relative; border-radius:10px; overflow:hidden; min-height:460px; color:var(--ink); display:block; }
+  .lead::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 35%, rgba(7,20,42,.95)); }
+  .lead .cap{ position:absolute; z-index:2; left:0; right:0; bottom:0; padding:30px; }
+  .lead h3{ font-size:clamp(26px,2.8vw,38px); margin:10px 0 8px; }
+  .lead p{ margin:0; color:rgba(246,241,230,.8); font-size:15px; line-height:1.6; max-width:560px; }
+  .lead img{ position:absolute; inset:0; transition:transform .8s; } .lead:hover img{ transform:scale(1.04); }
+  .list{ display:flex; flex-direction:column; }
+  .li{ color:inherit; display:grid; grid-template-columns:30px 1fr 96px; gap:14px; padding:16px 0; border-bottom:1px solid var(--line); align-items:center; }
+  .li:first-child{ padding-top:0; }
+  .li .n{ font-family:var(--serif); font-size:30px; font-weight:800; color:var(--gold); }
+  .li h4{ margin:4px 0 0; font-size:16.5px; line-height:1.35; font-weight:700; }
+  .li h4:hover{ color:#0e5560; }
+  .li .th{ width:96px; height:72px; border-radius:6px; overflow:hidden; }
+
+  /* card rows */
+  .cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  .card{ display:flex; flex-direction:column; gap:10px; }
+  .card .th{ aspect-ratio:4/3; border-radius:8px; overflow:hidden; position:relative; }
+  .card .th img{ transition:transform .6s; } .card:hover .th img{ transform:scale(1.06); }
+  .card h3{ font-size:18px; line-height:1.3; font-weight:700; font-family:var(--sans); }
+  .card p{ margin:0; font-size:14px; color:#556078; line-height:1.55; }
+  .card .meta{ font-size:12px; color:#7a8296; }
+
+  .tech{ background:#fff; }
+  .tech .sh{ color:var(--tech); } .tech .sh i{ background:var(--tech); }
+  .tech .kick{ color:#178994; }
+
+  /* spotlight */
+  .spot{ background:var(--navy); color:var(--ink); }
+  .spot .sh{ color:var(--org); } .spot .sh i{ background:var(--org); } .spot .sh h2{ color:var(--ink); }
+  .spot .grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:stretch; }
+  .spot .big{ border-radius:10px; overflow:hidden; position:relative; min-height:380px; }
+  .spot .txt{ display:flex; flex-direction:column; justify-content:center; gap:16px; }
+  .spot .txt h3{ font-size:clamp(28px,3vw,42px); }
+  .spot .txt p{ color:var(--muted); font-size:16px; line-height:1.7; margin:0; }
+  .spot .txt .kick{ color:var(--org); }
+  .spot .acts{ display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; }
+
+  /* good news */
+  .good .sh{ color:var(--good); } .good .sh i{ background:var(--good); }
+  .gn{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .gcard{ background:#fff; border-radius:10px; padding:26px; border-top:4px solid var(--good); box-shadow:0 20px 40px -30px rgba(10,26,51,.4); transition:transform .25s; }
+  .gcard:hover{ transform:translateY(-4px); }
+  .gcard .kick{ color:#22915a; }
+  .gcard h3{ font-size:21px; line-height:1.3; margin:10px 0 10px; font-family:var(--serif); }
+  .gcard p{ margin:0; color:#556078; font-size:14.5px; line-height:1.6; }
+
+  /* watch */
+  .watch{ background:#07142a; color:var(--ink); }
+  .watch .sh{ color:var(--gold2); } .watch .sh i{ background:var(--gold2); } .watch .sh h2{ color:var(--ink); }
+  .reels{ display:grid; grid-auto-flow:column; grid-auto-columns:200px; gap:16px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory; }
+  .reels::-webkit-scrollbar{ height:6px; } .reels::-webkit-scrollbar-thumb{ background:rgba(232,207,138,.4); border-radius:3px; }
+  .reel{ aspect-ratio:9/16; border-radius:12px; overflow:hidden; position:relative; scroll-snap-align:start; }
+  .reel::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,.85)); }
+  .reel .play{ position:absolute; z-index:2; left:50%; top:42%; transform:translate(-50%,-50%); width:54px; height:54px; border-radius:50%; background:rgba(255,255,255,.2); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; font-size:20px; transition:transform .2s; }
+  .reel:hover .play{ transform:translate(-50%,-50%) scale(1.12); }
+  .reel .cap{ position:absolute; z-index:2; left:12px; right:12px; bottom:14px; font-size:14px; font-weight:700; line-height:1.3; }
+  .reel .cap small{ display:block; font-weight:500; color:var(--gold2); font-size:11.5px; margin-top:4px; }
+
+  /* leaders connect */
+  .connect{ background:linear-gradient(135deg,#1c1238,#0a1a33 60%); color:var(--ink); }
+  .connect .sh{ color:var(--lead); } .connect .sh i{ background:var(--lead); } .connect .sh h2{ color:var(--ink); }
+  .cgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .cbox{ border:1px solid rgba(157,123,224,.35); border-radius:10px; padding:28px; background:rgba(255,255,255,.04); display:flex; flex-direction:column; gap:12px; }
+  .cbox h3{ font-family:var(--serif); font-size:24px; }
+  .cbox p{ margin:0; color:var(--muted); line-height:1.6; font-size:15px; flex:1; }
+  .cbox .ic{ font-size:28px; }
+
+  /* programs strip */
+  .progs{ background:#fff; }
+  .progs .sh{ color:var(--navy); } .progs .sh i{ background:var(--gold); }
+  .pg{ display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+  .p{ padding:22px 18px; border:1px solid var(--line); border-radius:10px; transition:background .25s, color .25s, transform .25s; }
+  .p:hover{ background:var(--navy); color:var(--ink); transform:translateY(-3px); }
+  .p b{ display:block; font-family:var(--serif); color:var(--gold); font-size:22px; margin-bottom:8px; }
+  .p span{ font-weight:700; font-size:14.5px; line-height:1.35; }
+
+  /* vision band */
+  .vision{ position:relative; color:var(--ink); padding:90px 0; overflow:hidden; }
+  .vision .bg{ position:absolute; inset:0; }
+  .vision::after{ content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(7,20,42,.95), rgba(7,20,42,.7) 55%, rgba(7,20,42,.3)); }
+  .vision .wrap{ position:relative; z-index:2; max-width:1280px; }
+  .vision h2{ font-size:clamp(34px,4.4vw,60px); max-width:16ch; margin:12px 0 16px; }
+  .vision h2 em{ color:var(--gold2); font-weight:500; }
+  .vision p{ max-width:560px; color:rgba(246,241,230,.85); font-size:16.5px; line-height:1.7; margin:0 0 26px; }
+  .vision .nums{ display:flex; gap:44px; margin-bottom:28px; }
+  .vision .nums b{ display:block; font-family:var(--serif); font-size:40px; color:var(--gold2); }
+  .vision .nums span{ font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+
+  /* newsletter + footer */
+  .news{ background:var(--gold); color:var(--navy); padding:60px 0; }
+  .news .wrap{ display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:center; }
+  .news h2{ font-size:clamp(28px,3.2vw,44px); }
+  .news p{ margin:10px 0 0; font-size:16px; }
+  .news form{ display:flex; gap:10px; }
+  .news input{ flex:1; padding:15px 20px; border-radius:999px; border:2px solid var(--navy); background:#fff8e6; font:inherit; font-size:15px; }
+  footer{ background:#07142a; color:var(--muted); padding:56px 0 90px; font-size:14px; }
+  footer .wrap{ display:grid; grid-template-columns:1.5fr repeat(4,1fr); gap:30px; }
+  footer h4{ color:var(--ink); font-family:var(--cond); letter-spacing:.12em; text-transform:uppercase; font-size:14px; margin:0 0 14px; }
+  footer a{ display:block; margin:7px 0; } footer a:hover{ color:var(--gold2); }
+  footer .legal{ grid-column:1/-1; border-top:1px solid rgba(201,162,74,.2); padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; }
+
+  .ribbon{ position:fixed; z-index:100; left:50%; bottom:16px; transform:translateX(-50%); background:rgba(10,26,51,.94); color:var(--gold2); border:1px solid rgba(201,162,74,.5); padding:8px 16px; border-radius:999px; font-size:12px; letter-spacing:.04em; white-space:nowrap; }
+
+  .rv{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .rv.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .rv{ opacity:1; transform:none; } .ticker .run{ animation:none; } }
+
+  @media (max-width:1100px){
+    .mast nav{ display:none; } .mast .menu{ display:block; }
+    .mast.open nav{ display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--navy); padding:10px 20px 18px; gap:0; }
+    .mast.open nav a{ padding:12px 0; }
+    .feat .grid, .latest .grid, .spot .grid, .news .wrap{ grid-template-columns:1fr; }
+    .side{ display:grid; grid-template-columns:repeat(2,1fr); }
+    .cards{ grid-template-columns:repeat(2,1fr); } .pg{ grid-template-columns:repeat(3,1fr); }
+    .gn, .cgrid{ grid-template-columns:1fr; }
+    .ue-grid{ grid-template-columns:1fr 1fr; }
+    .mosaic{ grid-template-columns:repeat(2,1fr); grid-auto-rows:170px; } .thanks{ grid-template-columns:1fr; } footer .wrap{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:600px){
+    .wrap{ width:calc(100% - 32px); }
+    .strip .hide{ display:none; }
+    .logo{ font-size:24px; }
+    .slides{ min-height:520px; } .slide .cap{ padding:24px; } .slide::after{ background:linear-gradient(180deg, rgba(7,20,42,.15) 0%, rgba(7,20,42,.85) 38%, rgba(7,20,42,.97) 100%); } .slide > img{ height:45%; }
+    .side{ grid-template-columns:1fr; }
+    .cards{ grid-template-columns:1fr; } .pg{ grid-template-columns:1fr 1fr; }
+    .li{ grid-template-columns:26px 1fr 76px; } .li .th{ width:76px; height:60px; }
+    .ue-grid{ grid-template-columns:1fr; }
+    .news form{ flex-direction:column; } footer .wrap{ grid-template-columns:1fr; }
+    .vision .nums{ gap:24px; } .ribbon{ font-size:10.5px; }
+    .sh h2{ font-size:21px; } .sh .bar{ display:none; } .sh a{ font-size:12px; margin-left:auto; text-align:right; } .sh i{ height:22px; }
+    .mast .btn.gold{ padding:9px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="strip"><div class="wrap">
+  <span id="today">Sunday, November 22, 2026</span><span class="hide">Connecting, uplifting and informing America</span><span class="sp"></span>
+  <a href="mailto:kerry@ufamily.org?subject=Story%20submission%20for%20UFamily.org" class="hide">Submit a story</a><a href="#news">Newsletter</a><a href="https://secure.givelively.org/donate/universal-family-connections" target="_blank" rel="noopener" style="color:var(--gold2);font-weight:700">Donate</a>
+</div></div>
+
+<header class="mast" id="mast"><div class="wrap row1">
+  <a class="logo" href="#top">UFAMILY<span>.org</span><small>THE FUTURE OF AMERICA</small></a>
+  <nav>
+    <a href="#latest">News</a><a href="#good">Good News</a><a href="#tech">Tech &amp; Future</a><a href="#spot">Organizations</a><a href="#connect">Leaders</a><a href="#watch">Watch</a><a href="#programs">Programs</a><a href="#events">Events</a>
+  </nav>
+  <a class="btn gold" href="https://secure.givelively.org/donate/universal-family-connections" target="_blank" rel="noopener" style="margin-left:8px">Donate</a>
+  <button class="menu" aria-label="Menu" onclick="document.getElementById('mast').classList.toggle('open')">☰</button>
+</div></header>
+
+<div class="ticker"><div class="wrap"><b>TRENDING</b><div class="rail"><div class="run" id="run">
+  <span>Thank you, First Citizens Bank, for sponsoring the 2nd Annual FWCC · shout-out to Sharonda Barner</span>
+  <span>Friendsgiving Dinner · Tue, Nov 24 · 4–8 PM · Manuscript, 203 Tacoma Ave S · free, take-out available</span>
+  <span>First Friday: The Next Gen · Fri, Dec 4 · 7–10 PM · Edison Square · free, all ages</span>
+  <span>GivingTuesday is Dec 1: power youth and family programs in Tacoma</span>
+  <span>Paint Drip &amp; Trap Hits · Dec 19 · The Poet, Tacoma · tickets on Give Lively</span>
+  <span>Help raise $500,000 for Phase 1 of the U FAMILY Community Technology &amp; Resource Center</span>
+  <span>UFamily News is coming soon: good news, tech and leaders from across America</span>
+  <span>Nominate a Black-led organization for our weekly Spotlight</span>
+</div></div></div></div>
+
+<section class="feat" id="top"><div class="wrap">
+  <div class="sh" style="color:var(--gold2)"><i style="background:var(--gold2)"></i><h2 style="color:var(--ink)">From UFamily.org</h2><span class="bar"></span><a href="#programs" style="color:var(--gold2)">All programs &amp; events →</a></div>
+  <div class="grid">
+    <div class="slides" id="slides">
+      <div class="slide on"><img src="fwcc26-07-kerry-and-sharonda-barner-first-citizens.jpg" alt="Kerry Williams and Sharonda Barner of First Citizens Bank on stage at the 2nd Annual FWCC" style="object-position:60% 30%"><div class="cap"><div class="kick">Recap · 2nd Annual FWCC · October 18, 2026 · Tacoma</div><h2>Building generational wealth, together.</h2><p>Thank you, First Citizens Bank, for sponsoring the 2nd Annual Financial Wellness Community Convention, and a special shout-out to Sharonda Barner.</p><a class="btn gold" href="#fwcc26">See the recap</a></div></div>
+      <div class="slide"><div class="tile t-give"><div class="glyph">Dec 1<small>GIVINGTUESDAY</small></div></div><div class="cap"><div class="kick">GivingTuesday · Tuesday, December 1</div><h2>Give today. Power the next generation.</h2><p>Your gift helps power UFamily.org’s youth and family programs in Tacoma.</p><a class="btn gold" href="https://secure.givelively.org/donate/universal-family-connections" target="_blank" rel="noopener">Give on GivingTuesday</a></div></div>
+      <div class="slide"><video src="paint-drip-promo.mp4" poster="paint-drip-promo-poster.jpg" muted autoplay loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video><div class="cap"><div class="kick">Fundraiser · Saturday, December 19, 2026 · 7–11 PM · The Poet, Tacoma</div><h2>Paint Drip &amp; Trap Hits</h2><p>An official UFamily.org fundraiser: a paint-and-sip night with a trap and R&amp;B soundtrack. $25 includes your paint canvas and 1 drink ticket. 21+, valid photo ID required.</p><a class="btn gold" href="https://secure.givelively.org/event/universal-family-connections/paint-drip-and-trap-hits-paint-sip-vibe" target="_blank" rel="noopener">Get tickets</a></div></div>
+      <div class="slide"><img src="art-05-commencement-bay.jpg" alt="Commencement Bay, Tacoma"><div class="cap"><div class="kick">Capital campaign · Phase 1</div><h2>Help us raise $500,000 for land in Tacoma.</h2><p>The future U FAMILY Community Technology &amp; Resource Center: a place designed to uplift, connect and empower our community. Five-year vision, complete by 2030.</p><a class="btn gold" href="https://secure.givelively.org/donate/universal-family-connections" target="_blank" rel="noopener">Invest in Phase 1</a></div></div>
+      <div class="slide"><img src="fwcc-2027-artwork-no-text.jpg" alt="Community convention hall" style="object-position:50% 30%"><div class="cap"><div class="kick">3rd Annual · Coming in 2027</div><h2>Financial Wellness Community Convention</h2><p>Workshops, resources and community for families building financial wellness and generational wealth. Details coming soon.</p><a class="btn gold" href="#news">Get the first announcement</a></div></div>
+      <div class="dots" id="dots"></div>
+    </div>
+    <div class="side" id="side">
+      <div class="kick lbl">Happening at UFamily.org</div>
+      <div class="si on" data-i="0"><div class="th"><img src="fwcc26-07-kerry-and-sharonda-barner-first-citizens.jpg" alt="" style="object-position:62% 30%"></div><div><b>FWCC 2026 recap</b><small>Thank you, First Citizens Bank</small></div></div>
+      <div class="si" data-i="1"><div class="th tile t-give"></div><div><b>GivingTuesday</b><small>Tue, Dec 1 · online</small></div></div>
+      <div class="si" data-i="2"><div class="th"><img src="paint-drip-promo-poster.jpg" alt=""></div><div><b>Paint Drip &amp; Trap Hits</b><small>Sat, Dec 19 · Tacoma</small></div></div>
+      <div class="si" data-i="3"><div class="th"><img src="art-05-commencement-bay.jpg" alt=""></div><div><b>Phase 1: $500K for land</b><small>Capital campaign</small></div></div>
+      <div class="si" data-i="4"><div class="th"><img src="fwcc-2027-artwork-no-text.jpg" alt=""></div><div><b>Financial Wellness Convention</b><small>3rd Annual · 2027</small></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="ue" id="events"><div class="wrap">
+  <div class="sh"><i></i><h2>Upcoming Community Events</h2><span class="bar"></span><a href="#top">All events →</a></div>
+  <div class="ue-grid">
+    <article class="ev2 rv">
+      <div class="fl" data-img="friendsgiving-nov24-flyer.jpg"><img src="friendsgiving-nov24-flyer.jpg" alt="Friendsgiving Dinner flyer: Nov 24, 4 to 8 PM at Manuscript, 203 Tacoma Ave S"><div class="date">NOV<b>24</b></div></div>
+      <div class="body">
+        <span class="kick">Feeding families · Thanksgiving week</span>
+        <h3>Friendsgiving Dinner: a free Thanksgiving meal for Tacoma families</h3>
+        <ul><li>Tuesday, November 24, 2026 · 4–8 PM</li><li>Manuscript · 203 Tacoma Ave S, Tacoma</li><li>Free · no reservations · take-out available</li></ul>
+        <details><summary>Read more</summary>
+          <p>This Thanksgiving week, UFamily.org and our community partners are opening the doors at Manuscript for a free Friendsgiving Dinner. It's first come, first served: no charges, no reservations, no questions asked, and take-out is available for families who need it.</p>
+          <p>Made possible by generous volunteers and donations from Get To Know EM (GTKE), The Tacoma Vegans, Manuscript, Trini Plate, Feed Forward Kids Camp, Tag Team Media, Krownless Kids, Kings Burgers and Epilogue Kitchen Collective (The Footnote Project). Bring your family, bring a friend, and share the word.</p>
+        </details>
+        <div class="acts"><a class="btn line2" href="https://maps.apple.com/?q=203+Tacoma+Ave+S,+Tacoma,+WA" target="_blank" rel="noopener">Directions</a></div>
+      </div>
+    </article>
+    <article class="ev2 rv">
+      <div class="fl" data-img="next-gen-first-friday-dec4-flyer.jpg"><img src="next-gen-first-friday-dec4-flyer.jpg" alt="First Friday The Next Gen flyer: Friday Dec 4, 7 to 10 PM at Edison Square, 5415 South Tacoma Way" style="object-position:50% 0%"><div class="date">DEC<b>4</b></div></div>
+      <div class="body">
+        <span class="kick">Youth empowerment · Violence prevention</span>
+        <h3>First Friday: The Next Gen live music showcase</h3>
+        <ul><li>Friday, December 4, 2026 · 7–10 PM</li><li>Edison Square · 5415 South Tacoma Way, Tacoma</li><li>Free admission · all ages</li></ul>
+        <details><summary>Read more</summary>
+          <p>The Next Gen is a free, all-ages concert lifting up young local talent, built around youth empowerment and violence prevention: giving the next generation a stage, a positive night out and a community that shows up for them.</p>
+          <p>Hosted by Talk Wit Zi, with food by Radnor's, a full bar, raffle prizes and more. Presented with Edison Live, Krownless Kings, Krownless Kids, Get To Know EM (GTKE), Edison Square and UFamily.org.</p>
+        </details>
+        <div class="acts"><a class="btn line2" href="https://maps.apple.com/?q=5415+South+Tacoma+Way,+Tacoma,+WA" target="_blank" rel="noopener">Directions</a></div>
+      </div>
+    </article>
+    <article class="ev2 rv">
+      <div class="fl" data-img="paint-drip-dec19-flyer.jpg"><img src="paint-drip-dec19-flyer.jpg" alt="Paint Drip and Trap Hits flyer: Saturday Dec 19, 7 to 11 PM at The Poet, Tacoma"><div class="date">DEC<b>19</b></div></div>
+      <div class="body">
+        <span class="kick">Official UFamily.org fundraiser · 21+</span>
+        <h3>Paint Drip &amp; Trap Hits: a paint &amp; sip experience</h3>
+        <ul><li>Saturday, December 19, 2026 · 7–11 PM</li><li>The Poet · 202 St Helens Ave (also via 203 Tacoma Ave S), Tacoma</li><li>$25 paint ticket: canvas + 1 drink ticket · $15 no-paint entry</li></ul>
+        <details><summary>Read more</summary>
+          <p>Paint, drinks, trap and R&amp;B hits, and good vibes. Grab your crew for a paint-and-sip night at The Poet in downtown Tacoma, an official UFamily.org fundraiser. 21+ event, valid photo ID required.</p>
+        </details>
+        <div class="acts"><a class="btn gold" href="https://secure.givelively.org/event/universal-family-connections/paint-drip-and-trap-hits-paint-sip-vibe" target="_blank" rel="noopener">Get tickets</a><a class="btn line2" href="#" data-video="paint-drip-promo.mp4">▶ Watch the promo</a></div>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="recap" id="fwcc26"><div class="wrap">
+  <div class="top">
+    <div>
+      <span class="badge">★ Recap · 2nd Annual</span>
+      <h2>Financial Wellness Community Convention <em>2026</em></h2>
+      <div class="when">Building Generational Wealth · Sunday, October 18, 2026 · Cora Whitley Family Center, Tacoma</div>
+    </div>
+    <a class="btn ghost" href="#news">Be first to hear about 2027 →</a>
+  </div>
+  <div class="mosaic" id="mosaic">
+    <figure class="hero rv"><img src="fwcc26-07-kerry-and-sharonda-barner-first-citizens.jpg" alt="Kerry Williams and Sharonda Barner on stage" style="object-position:62% 35%"><figcaption><b>Kerry Williams, UFamily.org CEO, with Sharonda Barner of First Citizens Bank</b></figcaption></figure>
+    <figure class="tall rv"><img src="fwcc26-02-kenny-williams-goldhouse.jpg" alt="Speaker at the podium" style="object-position:50% 35%"><figcaption>Kenny Williams · GoldHouse Real Estate</figcaption></figure>
+    <figure class="tall rv"><img src="fwcc26-01-speaker-navy-shirt.jpg" alt="Speaker with microphone" style="object-position:50% 30%"></figure>
+    <figure class="rv"><img src="fwcc26-03-speaker-blue-tie.jpg" alt="Speaker at the podium" style="object-position:50% 25%"></figure>
+    <figure class="rv"><img src="fwcc26-04-speaker-green-cardigan.jpg" alt="Speaker at the podium" style="object-position:50% 30%"></figure>
+    <figure class="rv"><img src="fwcc26-06-speaker-gray-blazer.jpg" alt="Speaker at the podium" style="object-position:60% 20%"></figure>
+    <figure class="rv"><img src="fwcc26-08-speaker-white-blouse.jpg" alt="Speaker at the podium" style="object-position:50% 40%"></figure>
+  </div>
+  <div class="thanks rv">
+    <div class="fcb"><span>First<br>Citizens<br>Bank</span></div>
+    <div>
+      <span class="kick">Thank you to our sponsor</span>
+      <h3>First Citizens Bank made FWCC 2026 possible.</h3>
+      <p>Thank you, First Citizens Bank, for sponsoring the 2nd Annual Financial Wellness Community Convention and investing in Tacoma families. A special shout-out to <b>Sharonda Barner</b>, our First Citizens Bank representative, for standing with our community and helping make this day happen.</p>
+    </div>
+    <a class="btn gold" href="mailto:kerry@ufamily.org?subject=Partnering%20on%20FWCC%202027">Partner with us in 2027</a>
+  </div>
+  <div class="tracks"><span>Next Generation</span><span>Money &amp; Mind</span><span>Access to Capital</span><span>AI &amp; Wealth</span><span>Real Estate Ownership</span><span>Beyond the Game</span><span>Talent to Wealth</span><span>Generational Wealth &amp; Legacy</span></div>
+</div></section>
+
+<section class="latest" id="latest"><div class="wrap">
+  <div class="sh" style="color:var(--navy)"><i style="background:var(--red)"></i><h2>Latest</h2><span class="bar"></span><a href="#top">From UFamily.org →</a></div>
+  <div class="grid">
+    <a class="lead rv" href="#fwcc26"><img src="fwcc26-02-kenny-williams-goldhouse.jpg" alt="Speaker at the 2nd Annual FWCC" style="object-position:50% 35%"><div class="cap"><span class="kick" style="color:var(--gold2)">Recap · FWCC 2026</span><h3 class="hd">Thank you, Tacoma: the 2nd Annual Financial Wellness Community Convention</h3><p>Real conversations about building generational wealth, sponsored by First Citizens Bank. See the photos.</p></div></a>
+    <div class="list">
+      <a class="li rv" href="#events"><div class="n">1</div><div><span class="kick" style="color:#22915a">Tue, Nov 24 · Free</span><h4>Friendsgiving Dinner: a free Thanksgiving meal at Manuscript, take-out available</h4></div><div class="th"><img src="friendsgiving-nov24-flyer.jpg" alt=""></div></a>
+      <a class="li rv" href="#events"><div class="n">2</div><div><span class="kick" style="color:#7b5cc4">Fri, Dec 4 · All ages</span><h4>First Friday: The Next Gen live music showcase at Edison Square</h4></div><div class="th"><img src="next-gen-first-friday-dec4-flyer.jpg" alt="" style="object-position:50% 0"></div></a>
+      <a class="li rv" href="https://secure.givelively.org/donate/universal-family-connections" target="_blank" rel="noopener"><div class="n">3</div><div><span class="kick" style="color:#22915a">GivingTuesday · Dec 1</span><h4>Give today and help power our programs in Tacoma</h4></div><div class="th tile t-give"></div></a>
+      <a class="li rv" href="#events"><div class="n">4</div><div><span class="kick" style="color:var(--org)">Sat, Dec 19 · 21+</span><h4>Paint Drip &amp; Trap Hits at The Poet: tickets on Give Lively</h4></div><div class="th"><img src="paint-drip-promo-poster.jpg" alt=""></div></a>
+      <a class="li rv" href="#vision"><div class="n">5</div><div><span class="kick" style="color:var(--gold)">Capital campaign</span><h4>Help us raise $500,000 for land for the U FAMILY Community Technology &amp; Resource Center</h4></div><div class="th"><img src="art-05-commencement-bay.jpg" alt=""></div></a>
+    </div>
+  </div>
+</div></section>
+
+<section class="tech" id="tech"><div class="wrap">
+  <div class="sh"><i></i><h2>Tech &amp; the Future</h2><span class="bar"></span><a href="#news">Get it first →</a></div>
+  <div class="cards">
+    <a class="card rv" href="#news"><div class="th"><img src="screen-03-dashboard-programs.jpg" alt=""></div><span class="kick">AI <span class="soon">COMING SOON</span></span><h3>AI for families and small businesses</h3><p class="meta">Plain-language guides to the tools changing work and money.</p></a>
+    <a class="card rv" href="#news"><div class="th"><img src="screen-01-lobby-welcome.jpg" alt=""></div><span class="kick">Careers <span class="soon">COMING SOON</span></span><h3>Tech careers of the future</h3><p class="meta">Where the jobs are going and how to train for them.</p></a>
+    <a class="card rv" href="#vision"><div class="th"><img src="cover-hq.jpg" alt="" style="object-position:70% 30%"></div><span class="kick">Community</span><h3>Our community technology center</h3><p class="meta">The 2030 vision for the U FAMILY Community Technology &amp; Resource Center.</p></a>
+    <a class="card rv" href="#programs"><div class="th tile t-tech"><div class="glyph" style="font-size:44px">03<small>OUR PROGRAM</small></div></div><span class="kick">Learn</span><h3>Technology &amp; Digital Empowerment</h3><p class="meta">AI education, digital literacy, technology access and workforce development.</p></a>
+  </div>
+</div></section>
+
+<section class="spot dark" id="spot"><div class="wrap">
+  <div class="sh"><i></i><h2>Organization Spotlight</h2><span class="bar"></span><a href="#connect" style="color:var(--org)">Nominate an organization →</a></div>
+  <div class="grid">
+    <div class="big tile t-org rv"><div class="glyph">Spotlight<small>EVERY WEEK</small></div></div>
+    <div class="txt rv">
+      <span class="kick">Launching soon</span>
+      <h3 class="hd">Every week, one Black-led organization making a difference.</h3>
+      <p>We tell the story of the people behind the work: what they do, who they serve, and how readers can support them. Featured organizations get a story, a social media feature and a place in our directory.</p>
+      <div class="acts"><a class="btn gold" href="mailto:kerry@ufamily.org?subject=Organization%20nomination">Nominate an organization</a></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="good" id="good"><div class="wrap">
+  <div class="sh"><i></i><h2 style="color:var(--navy)">Good News</h2><span class="bar"></span></div>
+  <div class="gn">
+    <div class="gcard rv"><span class="kick">Community <span class="soon">COMING SOON</span></span><h3>Community wins</h3><p>Stories of community work changing lives across the country, told by the people doing it.</p></div>
+    <div class="gcard rv"><span class="kick">Milestones <span class="soon">COMING SOON</span></span><h3>Milestones worth celebrating</h3><p>First homes, new businesses, graduations, and the lessons others can use.</p></div>
+    <div class="gcard rv"><span class="kick">Share yours</span><h3>Have good news?</h3><p>Tell us about a win in your community. <a href="mailto:kerry@ufamily.org?subject=Good%20news%20for%20UFamily.org" style="color:#22915a;font-weight:700">Send it to us →</a></p></div></div>
+</div></section>
+
+<section class="watch dark" id="watch"><div class="wrap">
+  <div class="sh"><i></i><h2>Watch</h2><span class="bar"></span><a href="https://facebook.com/UFCorg" target="_blank" rel="noopener" style="color:var(--gold2)">Follow us on Facebook →</a></div>
+  <div class="reels">
+    <a class="reel" href="#" data-video="paint-drip-promo.mp4"><img src="paint-drip-promo-poster.jpg" alt=""><div class="play">▶</div><div class="cap">Paint Drip &amp; Trap Hits: the vibe<small>UFamily.org · Event promo</small></div></a>
+    <a class="reel" href="https://facebook.com/UFCorg" target="_blank" rel="noopener"><img src="art-01-rainier.jpg" alt=""><div class="play">▶</div><div class="cap">Welcome to UFamily.org<small>UFamily.org · Brand intro</small></div></a>
+    <a class="reel" href="https://facebook.com/UFCorg" target="_blank" rel="noopener"><img src="art-02-tacoma-dome.jpg" alt=""><div class="play">▶</div><div class="cap">Inside our Phase 1 vision<small>UFamily.org · Campaign</small></div></a>
+  </div>
+</div></section>
+
+<section class="connect" id="connect"><div class="wrap">
+  <div class="sh"><i></i><h2>Leaders Connect</h2><span class="bar"></span></div>
+  <p style="max-width:720px;color:var(--muted);font-size:17px;line-height:1.7;margin:-6px 0 28px">A place where community leaders connect, highlight, uplift and inform our communities across the United States.</p>
+  <div class="cgrid">
+    <div class="cbox rv"><div class="ic">✍️</div><h3>Share your story</h3><p>Leading something in your community? Tell us about it. We review every submission.</p><a class="btn gold" href="mailto:kerry@ufamily.org?subject=Story%20submission%20for%20UFamily.org" style="align-self:flex-start">Submit a story</a></div>
+    <div class="cbox rv"><div class="ic">🏛️</div><h3>Nominate an organization</h3><p>Know a Black-led organization doing great work? Put them forward for the weekly Spotlight.</p><a class="btn gold" href="mailto:kerry@ufamily.org?subject=Organization%20nomination" style="align-self:flex-start">Nominate</a></div>
+    <div class="cbox rv"><div class="ic">🤝</div><h3>Join the leaders network</h3><p>Connect with leaders, founders and organizers shaping the future of America.</p><a class="btn gold" href="mailto:kerry@ufamily.org?subject=Leaders%20network%20request" style="align-self:flex-start">Request to join</a></div>
+  </div>
+</div></section>
+
+<section class="progs" id="programs"><div class="wrap">
+  <div class="sh"><i></i><h2>Our Programs</h2><span class="bar"></span><a href="#programs">Learn more →</a></div>
+  <div class="pg">
+    <div class="p rv"><b>01</b><span>Financial Wellness &amp; Economic Empowerment</span></div>
+    <div class="p rv"><b>02</b><span>HBCU Education &amp; Youth Development</span></div>
+    <div class="p rv"><b>03</b><span>Technology &amp; Digital Empowerment</span></div>
+    <div class="p rv"><b>04</b><span>Youth Violence Prevention</span></div>
+    <div class="p rv"><b>05</b><span>Family Support &amp; Community Resources</span></div>
+    <div class="p rv"><b>06</b><span>Community Engagement &amp; Social Equity</span></div>
+  </div>
+</div></section>
+
+<div class="vision"><div class="bg"><img src="art-01-rainier.jpg" alt="" style="object-position:50% 35%"></div><div class="wrap">
+  <span class="kick" style="color:var(--gold2)">Universal Family Connections · Tacoma, Washington · Since 2019</span>
+  <h2 class="hd">Building the future, <em>one phase at a time.</em></h2>
+  <p>UFamily.org is a 501(c)(3) nonprofit that empowers youth, individuals and families through financial wellness, HBCU educational and cultural experiences, technology education, youth violence prevention, mentorship and family support.</p>
+  <div class="nums"><div><b>$500K</b><span>Phase 1 goal</span></div><div><b>6</b><span>Program areas</span></div><div><b>2030</b><span>Resource center</span></div></div>
+  <a class="btn gold" href="https://secure.givelively.org/donate/universal-family-connections" target="_blank" rel="noopener">Support the mission</a>
+</div></div>
+
+<div class="news" id="news"><div class="wrap">
+  <div><h2 class="hd">Stay connected to the future of America.</h2><p>Good news, tech, leaders and UFamily.org events, in your inbox.</p></div>
+  <a class="btn navy" href="mailto:kerry@ufamily.org?subject=Subscribe%20me%20to%20UFamily.org%20updates" style="justify-self:start">Subscribe by email →</a>
+</div></div>
+
+<footer><div class="wrap">
+  <div><a class="logo" href="#top" style="color:var(--ink)">UFAMILY<span>.org</span><small>THE FUTURE OF AMERICA</small></a><p style="max-width:320px;line-height:1.7;margin-top:16px">Universal Family Connections is a 501(c)(3) nonprofit in Tacoma, Washington.</p></div>
+  <div><h4>News</h4><a href="#fwcc26">FWCC 2026 recap</a><a href="#latest">Latest</a><a href="#tech">Tech &amp; Future</a><a href="#good">Good News</a></div>
+  <div><h4>Community</h4><a href="#spot">Organization Spotlight</a><a href="#connect">Leaders Connect</a><a href="#connect">Submit a story</a></div>
+  <div><h4>UFamily.org</h4><a href="#programs">Programs</a><a href="#events">Events</a><a href="https://secure.givelively.org/donate/universal-family-connections" target="_blank" rel="noopener">Donate</a><a href="mailto:kerry@ufamily.org">Contact</a></div>
+  <div><h4>Follow</h4><a href="https://facebook.com/UFCorg" target="_blank" rel="noopener">Facebook</a></div>
+  <div class="legal"><span>© 2026 Universal Family Connections. All rights reserved.</span><span>Tacoma, Washington · <a href="mailto:kerry@ufamily.org" style="display:inline">kerry@ufamily.org</a></span></div>
+</div></footer>
+
+<div class="lb" id="lb" onclick="this.classList.remove('on')"><img alt=""></div>
+
+<script>
+  const shot = /shot/.test(location.search);
+  // today's date in the top strip
+  try { document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }); } catch (e) {}
+  // ticker loops seamlessly: repeat the items once
+  const run = document.getElementById('run'); run.innerHTML += run.innerHTML;
+  // UFamily.org slider
+  const slides = [...document.querySelectorAll('.slide')], sides = [...document.querySelectorAll('.si')], dots = document.getElementById('dots');
+  slides.forEach((_, i) => { const b = document.createElement('button'); b.setAttribute('aria-label', 'Slide ' + (i + 1)); b.onclick = () => show(i, true); dots.appendChild(b); });
+  let cur = 0, timer;
+  function show(i, user) {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('on', k === cur));
+    sides.forEach((s, k) => s.classList.toggle('on', k === cur));
+    [...dots.children].forEach((d, k) => d.classList.toggle('on', k === cur));
+    clearInterval(timer); if (!shot) timer = setInterval(() => show(cur + 1), 6500);
+  }
+  sides.forEach(s => s.onclick = () => show(+s.dataset.i, true));
+  show(0);
+  // photo lightbox for the FWCC recap
+const lb = document.getElementById('lb');
+function openLb(html) { lb.innerHTML = html; lb.classList.add('on'); }
+lb.onclick = () => { lb.classList.remove('on'); lb.innerHTML = ''; };
+document.addEventListener('click', e => {
+  const v = e.target.closest('[data-video]'); if (v) { e.preventDefault(); openLb(`<video src="${v.dataset.video}" controls autoplay playsinline></video>`); return; }
+  const i = e.target.closest('[data-img]'); if (i) { openLb(`<img src="${i.dataset.img}" alt="">`); return; }
+  const f = e.target.closest('#mosaic figure'); if (f) openLb(`<img src="${f.querySelector('img').src}" alt="">`);
+});
+  addEventListener('keydown', e => { if (e.key === 'Escape') { lb.classList.remove('on'); lb.innerHTML = ''; } });
+  // reveal on scroll
+  if (shot) { document.querySelectorAll('.rv').forEach(e => { e.style.transition = 'none'; e.classList.add('in'); }); document.querySelector('.mast').style.position = 'relative'; }
+  else { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 }); document.querySelectorAll('.rv').forEach(el => io.observe(el)); }
+  document.querySelectorAll('.mast nav a').forEach(a => a.onclick = () => document.getElementById('mast').classList.remove('open'));
+</script>
+</body>
+</html>
